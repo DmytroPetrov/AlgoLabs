@@ -7,7 +7,7 @@ int main()
 
     // 0.1 <= x <= 0.8
     float x=0.1, e=0.0001;
-    double sum_n=0, sum_e=0;
+    double sum_n=0, sum_e=0, buff = 0;
     int i, n=50;
 
     for( ; x <= 0.8; x += 0.07)
@@ -23,7 +23,8 @@ int main()
 
         for( i=0 ; i > -1; i++)
         {
-            if (sum_e -((cos(2*i*x))/(4*i*i - 1)) <= 0.0001) break;
+            buff = (cos(2*(i- 1)*x))/(4*(i- 1)*(i- 1) - 1);
+            if (((cos(2*i*x))/(4*i*i - 1)- buff) <= 0.0001) break;
             sum_e += (cos(2*i*x))/(4*i*i - 1);
         }
         printf("SE = %f       \n", sum_e);
